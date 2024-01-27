@@ -1,0 +1,33 @@
+<mat-toolbar color="primary" class="toolbar-container">
+    <span>Dating App</span>
+    <ng-container *ngIf="accountService.currentUser$| async">
+        <button mat-flat-button color="accent">Matches</button>
+        <button mat-flat-button color="accent">Lists</button>
+        <button mat-flat-button color="accent">Messages</button>
+    </ng-container>
+    <span class="example-spacer"></span>
+    <div *ngIf="accountService.currentUser$ | async" ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            Welcome user
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Edit Profile</button>
+            <button ngbDropdownItem (click)="logout()">Logout</button>
+        </div>
+    </div>
+    <form *ngIf="!(accountService.currentUser$ | async)" class="d-flex" #loginForm="ngForm" autocomplete="off" (ngSubmit)="login()">
+        <input 
+        class="form-control"
+        type="text" 
+        placeholder="Username"
+        name="username"
+        [(ngModel)]="model.username">
+        <input 
+        class="form-control" 
+        type="password" 
+        placeholder="Password"
+        name="password"
+        [(ngModel)]="model.password">
+        <button mat-stroked-button type="submit">LOGIN</button>
+    </form>
+</mat-toolbar>
