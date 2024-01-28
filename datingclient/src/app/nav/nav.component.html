@@ -1,14 +1,14 @@
 <mat-toolbar color="primary" class="toolbar-container">
-    <span>Dating App</span>
+    <span routerLink="/" routerLinkActive="active">Dating App</span>
     <ng-container *ngIf="accountService.currentUser$| async">
-        <button mat-flat-button color="accent">Matches</button>
-        <button mat-flat-button color="accent">Lists</button>
-        <button mat-flat-button color="accent">Messages</button>
+        <button mat-button color="light" routerLink="/members" routerLinkActive="active">Matches</button>
+        <button mat-button color="light" routerLink="/lists" routerLinkActive="active">Lists</button>
+        <button mat-button color="light" routerLink="/messages" routerLinkActive="active">Messages</button>
     </ng-container>
     <span class="example-spacer"></span>
-    <div *ngIf="accountService.currentUser$ | async" ngbDropdown class="d-inline-block">
-        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-            Welcome user
+    <div *ngIf="(accountService.currentUser$ | async) as user" ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>
+            Welcome {{user.username | titlecase}}
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem>Edit Profile</button>
