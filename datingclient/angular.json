@@ -37,7 +37,7 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "node_modules/bootswatch/dist/united/bootstrap.css",
               "node_modules/font-awesome//css/font-awesome.min.css",
               "src/styles.scss"
